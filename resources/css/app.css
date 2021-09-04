@@ -1,0 +1,62 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+    font-family: "recoleta-semibold";
+    src: url("../fonts/recoleta-semibold-webfont.woff2") format("woff2"),
+        url("../fonts/recoleta-semibold-webfont.eot"),
+        url("../fonts/recoleta-semibold-webfont.ttf") format("truetype"),
+        url("../fonts/recoleta-semibold-webfont.svg#recoletasemibold")
+            format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "recoleta-semibold";
+    font-weight: normal;
+}
+
+body {
+    @apply text-gray-700;
+}
+
+.html {
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        @apply font-normal;
+        font-family: system-ui, sans-serif;
+    }
+
+    & p {
+        @apply mb-4;
+    }
+
+    & b,
+    & strong {
+        @apply font-bold;
+    }
+
+    & a {
+        @apply font-medium text-blue-500 underline;
+    }
+
+    & ul,
+    & ol {
+        @apply px-4;
+    }
+
+    & li {
+        @apply list-disc;
+    }
+}
