@@ -3,15 +3,17 @@
         <Link :href="route('deal.show', deal.slug)">
             <div class="flex-shrink-0 leading-tight items-stretch relative">
                 <div class="rounded relative mr-2 flex items-center">
-                    <img
+                    <v-lazy-image
                         :style="[
                             deal.expired
                                 ? { filter: 'grayscale(100%)', opacity: '35%' }
                                 : {}
                         ]"
                         class="sm:w-auto sm:h-auto bg-gray-200 object-cover rounded-md"
-                        width="300"
-                        :src="deal.image[0].filename"
+                        :src="transformImage(deal.image[0].filename, '300x0')"
+                        :src-placeholder="
+                            transformImage(deal.image[0].filename, '50x0')
+                        "
                     />
                 </div>
             </div>
@@ -19,7 +21,7 @@
                 class="md:flex md:flex-col mt-1 flex-1 pl-0 relative self-stretch"
             >
                 <h3
-                    :class="[deal.expired ? 'text-gray-500' : 'text-green-800']"
+                    :class="[deal.expired ? 'text-gray-500' : 'text-gray-800']"
                     class="sm:text-lg mt-1 font-display line-clamp-1"
                 >
                     {{ deal.name }}
@@ -70,9 +72,12 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue";
+import VLazyImage from "v-lazy-image/v2";
+
 export default {
     components: {
-        Link
+        Link,
+        VLazyImage
     },
     props: {
         deal: {

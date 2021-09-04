@@ -1,14 +1,15 @@
 <template>
     <Layout>
-        <main class="grid grid-cols-3 gap-6">
+        <main>
+            <h2 class="text-2xl mb-2 text-green-500">Kleidung & Stil</h2>
             <masonry-wall
-                :items="deals"
-                :ssr-columns="1"
-                :column-width="300"
-                :padding="16"
+                :items="items"
+                :ssr-columns="3"
+                :column-width="200"
+                :padding="8"
             >
-                <template #default="{ deal, deal->u }">
-                    <DealTeaser :deal="deal" />
+                <template #default="{ item }">
+                    <DealTeaser :deal="item" :key="item.uuid" />
                 </template>
             </masonry-wall>
         </main>
@@ -28,6 +29,11 @@ export default {
         deals: {
             type: Array,
             required: true
+        }
+    },
+    computed: {
+        items() {
+            return this.deals;
         }
     }
 };

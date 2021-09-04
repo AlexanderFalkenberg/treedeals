@@ -8,12 +8,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
-
     public function index()
     {
         return Inertia::render('Index', [
-            'deals' =>  Deal::latest()->get()
+            'deals' =>  Deal::limit(10)->get()
         ]);
     }
 }
