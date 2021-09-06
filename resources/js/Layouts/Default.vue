@@ -1,22 +1,29 @@
 <template>
     <div>
+        <Banner />
         <Header />
+        <Hero />
         <div class="grid grid-cols-12 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto">
             <div class="col-span-12">
                 <slot></slot>
             </div>
         </div>
+        <Footer />
     </div>
 </template>
 
 <script>
 import Header from "@/Components/Header";
-import Sidenav from "@/Components/Sidenav";
+import Banner from "@/Components/Banner";
+import Hero from "@/Components/Hero";
+import Footer from "@/Components/Footer";
 
 export default {
     components: {
+        Banner,
         Header,
-        Sidenav
+        Hero,
+        Footer
     }
 };
 </script>

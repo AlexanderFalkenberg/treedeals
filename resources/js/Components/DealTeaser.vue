@@ -11,9 +11,6 @@
                         ]"
                         class="sm:w-auto sm:h-auto bg-gray-200 object-cover rounded-md"
                         :src="transformImage(deal.image[0].filename, '300x0')"
-                        :src-placeholder="
-                            transformImage(deal.image[0].filename, '50x0')
-                        "
                     />
                 </div>
             </div>
@@ -28,27 +25,26 @@
                 </h3>
 
                 <div>
+                    <div>
+                        <span
+                            v-if="deal.original_price"
+                            class="text-gray-400 line-through block text-xs"
+                            >{{ deal.original_price }} €</span
+                        >
+                    </div>
                     <div
                         class="space-x-2 items-center flex justify-between pr-2"
                     >
-                        <div>
-                            <span
-                                v-if="deal.original_price"
-                                class="text-gray-400 line-through block text-xs"
-                                >{{ deal.original_price }} €</span
-                            >
-
-                            <span
-                                v-if="deal.price"
-                                :class="[
-                                    deal.expired
-                                        ? 'text-gray-500'
-                                        : 'text-green-500',
-                                    'text-xl sm:text-xl  font-bold'
-                                ]"
-                                >{{ deal.price }} €</span
-                            >
-                        </div>
+                        <span
+                            v-if="deal.price"
+                            :class="[
+                                deal.expired
+                                    ? 'text-gray-500'
+                                    : 'text-green-500',
+                                'text-xl sm:text-xl  font-bold'
+                            ]"
+                            >{{ deal.price }} €</span
+                        >
 
                         <span
                             v-if="deal.discount"
@@ -72,9 +68,11 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue";
+import TransformImages from "@/Mixins/transform-storyblok-images";
 import VLazyImage from "v-lazy-image/v2";
 
 export default {
+    mixins: [TransformImages],
     components: {
         Link,
         VLazyImage
@@ -83,16 +81,6 @@ export default {
         deal: {
             type: Object,
             required: true
-        }
-    },
-    methods: {
-        transformImage(image, option) {
-            if (!image) return "";
-            if (!option) return "";
-
-            let imageService = "https://img2.storyblok.com/";
-            let path = image.replace("https://a.storyblok.com", "");
-            return imageService + option + path;
         }
     }
 };

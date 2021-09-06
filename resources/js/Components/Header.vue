@@ -1,39 +1,11 @@
 <template>
-    <!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
     <div class="bg-white">
-        <!--
-    Mobile menu
-
-    Off-canvas menu for mobile, show/hide based on off-canvas menu state.
-  
-
-  -->
-        <transition
-            enter-active-class="transition-all duration-300 ease-in-out"
-            leave-active-class="transition-all duration-300 ease-in-out"
+        <div
+            class="fixed ease-in-out inset-0 flex z-30 lg:hidden mt-16"
+            role="dialog"
+            aria-modal="true"
         >
-            <div
-                v-if="mobileMenuOpen"
-                class="fixed ease-in-out inset-0 flex z-20 lg:hidden"
-                role="dialog"
-                aria-modal="true"
-            >
-                <!--
+            <!--
       Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
       Entering: "transition-opacity ease-linear duration-300"
@@ -43,88 +15,49 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-                <!--  <div
-                class="fixed inset-0 bg-black bg-opacity-25"
-                aria-hidden="true"
-            ></div> -->
+            <transition
+                enter-active-class="transition-opacity duration-300"
+                leave-active-class="transition-opacity duration-300"
+                enter-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-class="opacity-100"
+                leave-to-class="opacity-0"
+            >
+                <div
+                    v-if="mobileMenuOpen"
+                    class="fixed inset-0 bg-black bg-opacity-25"
+                    aria-hidden="true"
+                ></div>
+            </transition>
 
-                <!--
+            <!--
       Off-canvas menu, show/hide based on off-canvas menu state.
 
       Entering: "transition ease-in-out duration-300 transform"
         From: "-translate-x-full"
-        To: "translate-x-0"
+        To: "-translate-x-full"
       Leaving: "transition ease-in-out duration-300 transform"
         From: "translate-x-0"
         To: "-translate-x-full"
        
     -->
-
+            <transition
+                v-if="mobileMenuOpen"
+                enter-active-class="transition-transform transform duration-300"
+                leave-active-class="transition-transform transform duration-300"
+                enter-class="-translate-x-full"
+                enter-to-class="-translate-x-full"
+                leave-class="translate-x-0"
+                leave-to-class="-translate-x-full"
+            >
                 <div
                     :class="
                         mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                     "
-                    class="transition-transform transform duration-300 ease-in-out relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
+                    class=" ease-in-out relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
                 >
-                    <div class="px-4 pt-5 pb-2 flex">
-                        <button
-                            @click="mobileMenuOpen = false"
-                            type="button"
-                            class="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
-                        >
-                            <span class="sr-only">Close menu</span>
-                            <!-- Heroicon name: outline/x -->
-                            <svg
-                                class="h-6 w-6"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-
                     <!-- Links -->
                     <div class="mt-2">
-                        <div class="border-b border-gray-200">
-                            <div
-                                class="-mb-px flex px-4 space-x-8"
-                                aria-orientation="horizontal"
-                                role="tablist"
-                            >
-                                <!-- Selected: "text-indigo-600 border-indigo-600", Not Selected: "text-gray-900 border-transparent" -->
-                                <button
-                                    id="tabs-1-tab-1"
-                                    class="text-gray-900 border-transparent flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium"
-                                    aria-controls="tabs-1-panel-1"
-                                    role="tab"
-                                    type="button"
-                                >
-                                    Women
-                                </button>
-
-                                <!-- Selected: "text-indigo-600 border-indigo-600", Not Selected: "text-gray-900 border-transparent" -->
-                                <button
-                                    id="tabs-1-tab-2"
-                                    class="text-gray-900 border-transparent flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium"
-                                    aria-controls="tabs-1-panel-2"
-                                    role="tab"
-                                    type="button"
-                                >
-                                    Men
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- 'Women' tab panel, show/hide based on tab state. -->
                         <div
                             id="tabs-1-panel-1"
                             class="pt-10 pb-8 px-4 space-y-10"
@@ -258,7 +191,7 @@
                             <a
                                 href="#"
                                 class="-m-2 p-2 block font-medium text-gray-900"
-                                >Company</a
+                                >Datenschutz</a
                             >
                         </div>
 
@@ -266,31 +199,14 @@
                             <a
                                 href="#"
                                 class="-m-2 p-2 block font-medium text-gray-900"
-                                >Stores</a
+                                >Impressum</a
                             >
                         </div>
                     </div>
-
-                    <div class="border-t border-gray-200 py-6 px-4">
-                        <a href="#" class="-m-2 p-2 flex items-center">
-                            <img
-                                src="https://tailwindui.com/img/flags/flag-canada.svg"
-                                alt=""
-                                class="w-5 h-auto block flex-shrink-0"
-                            />
-                            <span
-                                class="ml-3 block text-base font-medium text-gray-900"
-                            >
-                                CAD
-                            </span>
-                            <span class="sr-only">, change currency</span>
-                        </a>
-                    </div>
                 </div>
-            </div>
-        </transition>
-
-        <header class="relative bg-white">
+            </transition>
+        </div>
+        <header class="relative bg-white border-b z-40">
             <nav
                 aria-label="Top"
                 class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -300,14 +216,15 @@
                         <div class="flex-1 flex items-center lg:hidden">
                             <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
                             <button
-                                @click="mobileMenuOpen = true"
+                                @click="mobileMenuOpen = !mobileMenuOpen"
                                 type="button"
                                 class="-ml-2 bg-white p-2 rounded-md text-gray-400"
                             >
-                                <span class="sr-only">Open menu</span>
+                                <span class="sr-only">Toggle menu</span>
 
                                 <!-- Heroicon name: outline/menu -->
                                 <svg
+                                    v-if="!mobileMenuOpen"
                                     class="h-6 w-6"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -320,6 +237,22 @@
                                         stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                </svg>
+                                <svg
+                                    v-else
+                                    class="h-6 w-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12"
                                     />
                                 </svg>
                             </button>
@@ -360,25 +293,27 @@
                                             class=" relative z-10 flex items-center justify-center transition-colors ease-out duration-200 text-sm"
                                             aria-expanded="false"
                                         >
-                                            Kategorien
-                                            <!-- Open: "bg-indigo-600", Closed: "" -->
                                             <span
-                                                class="absolute bottom-0 inset-x-0 h-0.5 transition-colors ease-out duration-200 sm:mt-5 sm:transform sm:translate-y-px"
-                                                aria-hidden="true"
-                                            ></span>
+                                                class="text-green-700 font-bold rounded  inline-flex items-center justify-center"
+                                            >
+                                                Kategorien
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-5 w-5"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <!-- Open: "bg-indigo-600", Closed: "" -->
                                         </button>
                                     </div>
 
-                                    <!--
-                  'Women' flyout menu, show/hide based on flyout menu state.
-
-                  Entering: "transition ease-out duration-200"
-                    From: "opacity-0"
-                    To: "opacity-100"
-                  Leaving: "transition ease-in duration-150"
-                    From: "opacity-100"
-                    To: "opacity-0"
-                -->
                                     <transition
                                         enter-active-class="transition ease-out duration-200"
                                         leave-active-class="transition ease-out duration-200"
@@ -391,7 +326,6 @@
                                             v-if="flyoutMenuOpen"
                                             class="absolute z-50 top-full inset-x-0"
                                         >
-                                            <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
                                             <div
                                                 class="absolute inset-0 top-1/2 bg-white shadow"
                                                 aria-hidden="true"
@@ -538,14 +472,21 @@
                                                                                 category.slug
                                                                             "
                                                                         >
-                                                                            <a
+                                                                            <Link
+                                                                                :href="
+                                                                                    route(
+                                                                                        'category.show',
+                                                                                        category.slug
+                                                                                    )
+                                                                                "
+                                                                            >
                                                                                 href="#"
                                                                                 class="hover:text-gray-800"
-                                                                            >
+                                                                                >
                                                                                 {{
                                                                                     category.name
                                                                                 }}
-                                                                            </a>
+                                                                            </Link>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -571,6 +512,7 @@
 
                         <div class="flex-1 flex items-center justify-end">
                             <!-- Search -->
+                            <input class="" />
                             <a
                                 href="#"
                                 class="hidden ml-6 p-2 text-gray-400 hover:text-gray-500 lg:block"
@@ -595,12 +537,12 @@
                             </a>
 
                             <!-- Account -->
-                            <a
+                            <!--  <a
                                 href="#"
                                 class="p-2 text-gray-400 hover:text-gray-500 lg:ml-4"
                             >
                                 <span class="sr-only">Account</span>
-                                <!-- Heroicon name: outline/user -->
+
                                 <svg
                                     class="w-6 h-6"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -616,39 +558,7 @@
                                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                                     />
                                 </svg>
-                            </a>
-
-                            <!-- Cart -->
-                            <div class="ml-4 flow-root lg:ml-6">
-                                <a
-                                    href="#"
-                                    class="group -m-2 p-2 flex items-center"
-                                >
-                                    <!-- Heroicon name: outline/shopping-bag -->
-                                    <svg
-                                        class="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                                        />
-                                    </svg>
-                                    <span
-                                        class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800"
-                                        >0</span
-                                    >
-                                    <span class="sr-only"
-                                        >items in cart, view bag</span
-                                    >
-                                </a>
-                            </div>
+                            </a> -->
                         </div>
                     </div>
                 </div>

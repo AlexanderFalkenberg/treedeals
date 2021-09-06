@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <main v-if="deal" class="py-4  px-2 max-w-7xl mx-auto relative">
+        <main v-if="deal" class="py-4 max-w-7xl mx-auto relative">
             <div class="md:flex space-x-8">
                 <div class="md:w-1/2 lg:w-3/5">
                     <figure
@@ -23,8 +23,17 @@
                             :style="[
                                 deal.is ? { filter: 'grayscale(100%)' } : {}
                             ]"
-                            class="relative z-40 h-72"
-                            :src="deal.image[0].filename"
+                        />
+                        <v-lazy-image
+                            :style="[
+                                deal.expired
+                                    ? { filter: 'grayscale(100%)' }
+                                    : {}
+                            ]"
+                            class="relative z-20 h-80"
+                            :src="
+                                transformImage(deal.image[0].filename, '300x0')
+                            "
                         />
                         <div
                             class="
@@ -156,11 +165,15 @@
 <script>
 import Layout from "@/Layouts/Default";
 import CouponButton from "@/Components/CouponButton";
+import TransformImages from "@/Mixins/transform-storyblok-images";
+import VLazyImage from "v-lazy-image/v2";
 
 export default {
+    mixins: [TransformImages],
     components: {
         Layout,
-        CouponButton
+        CouponButton,
+        VLazyImage
     },
     props: {
         deal: Object,

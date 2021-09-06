@@ -14,10 +14,13 @@ Vue.use(MasonryWall);
 Vue.use(VueRichTextRenderer);
 Vue.use(ZiggyVue);
 
+import { i18n } from "./plugins/i18n";
+
 createInertiaApp({
     resolve: name => import(`./Pages/${name}`),
     setup({ el, App, props }) {
         new Vue({
+            i18n,
             render: h => h(App, props)
         }).$mount(el);
     }
