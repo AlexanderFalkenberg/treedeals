@@ -3,35 +3,10 @@
         <CopyToClipboard :text="coupon_code">
             <button
                 :class="[
-                    expired ? 'bg-gray-300' : 'bg-green-400 hover:bg-green-600 '
+                    expired ? '' : ''
                 ]"
-                class="w-full tracking-wider rounded py-4 px-4 pr-16 text-white text-sm inline-flex items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
-            >
-                {{ coupon_code }}
-                <span class="absolute left-0 transform">
-                    <transition name="slide-fade"></transition
-                ></span>
-
-                <div
-                    :class="[expired ? 'bg-gray-300' : 'bg-green-500']"
-                    class="absolute right-0 h-full inline-flex items-center px-3 rounded-r"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 md:h-5 md:w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                        />
-                    </svg>
-                </div>
-            </button>
+                class="w-full tracking-wider py-4 px-4 border border-gray-600 text-gray-800 text-sm inline-flex justify-center text-center items-center cursor-pointer whitespace-nowrap font-bold focus:outline-none transition duration-150 ease-in-out"
+            >{{ coupon_code }}</button>
         </CopyToClipboard>
     </div>
 </template>

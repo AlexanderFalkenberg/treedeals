@@ -14,7 +14,7 @@
       Leaving: "transition-opacity ease-linear duration-300"
         From: "opacity-100"
         To: "opacity-0"
-    -->
+            -->
             <transition
                 enter-active-class="transition-opacity duration-300"
                 leave-active-class="transition-opacity duration-300"
@@ -40,7 +40,7 @@
         From: "translate-x-0"
         To: "-translate-x-full"
        
-    -->
+            -->
             <transition
                 v-if="mobileMenuOpen"
                 enter-active-class="transition-transform transform duration-300"
@@ -54,7 +54,7 @@
                     :class="
                         mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                     "
-                    class=" ease-in-out relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
+                    class="ease-in-out relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
                 >
                     <!-- Links -->
                     <div class="mt-2">
@@ -78,22 +78,14 @@
                                         <div
                                             class="p-4 bg-white bg-opacity-60 text-base sm:text-sm"
                                         >
-                                            <a
-                                                href="#"
-                                                class="font-medium text-gray-900"
-                                            >
-                                                <span
-                                                    class="absolute inset-0"
-                                                    aria-hidden="true"
-                                                ></span>
+                                            <a href="#" class="font-medium text-gray-900">
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
                                                 New Arrivals
                                             </a>
                                             <p
                                                 aria-hidden="true"
                                                 class="mt-0.5 text-gray-700 sm:mt-1"
-                                            >
-                                                Shop now
-                                            </p>
+                                            >Shop now</p>
                                         </div>
                                     </div>
                                 </div>
@@ -110,22 +102,14 @@
                                         <div
                                             class="p-4 bg-white bg-opacity-60 text-base sm:text-sm"
                                         >
-                                            <a
-                                                href="#"
-                                                class="font-medium text-gray-900"
-                                            >
-                                                <span
-                                                    class="absolute inset-0"
-                                                    aria-hidden="true"
-                                                ></span>
+                                            <a href="#" class="font-medium text-gray-900">
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Basic Tees
                                             </a>
                                             <p
                                                 aria-hidden="true"
                                                 class="mt-0.5 text-gray-700 sm:mt-1"
-                                            >
-                                                Shop now
-                                            </p>
+                                            >Shop now</p>
                                         </div>
                                     </div>
                                 </div>
@@ -142,31 +126,21 @@
                                         <div
                                             class="p-4 bg-white bg-opacity-60 text-base sm:text-sm"
                                         >
-                                            <a
-                                                href="#"
-                                                class="font-medium text-gray-900"
-                                            >
-                                                <span
-                                                    class="absolute inset-0"
-                                                    aria-hidden="true"
-                                                ></span>
+                                            <a href="#" class="font-medium text-gray-900">
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Accessories
                                             </a>
                                             <p
                                                 aria-hidden="true"
                                                 class="mt-0.5 text-gray-700 sm:mt-1"
-                                            >
-                                                Shop now
-                                            </p>
+                                            >Shop now</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="space-y-10">
-                                <p class="font-medium text-gray-900">
-                                    Kategorien
-                                </p>
+                                <p class="font-medium text-gray-900">Kategorien</p>
                                 <ul
                                     role="list"
                                     aria-labelledby="women-shoes-heading"
@@ -177,9 +151,7 @@
                                         v-for="category in categories"
                                         :key="category.slug"
                                     >
-                                        <a href="#" class="hover:text-gray-800">
-                                            {{ category.name }}
-                                        </a>
+                                        <a href="#" class="hover:text-gray-800">{{ category.name }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -188,29 +160,18 @@
 
                     <div class="border-t border-gray-200 py-6 px-4 space-y-6">
                         <div class="flow-root">
-                            <a
-                                href="#"
-                                class="-m-2 p-2 block font-medium text-gray-900"
-                                >Datenschutz</a
-                            >
+                            <a href="#" class="-m-2 p-2 block font-medium text-gray-900">Datenschutz</a>
                         </div>
 
                         <div class="flow-root">
-                            <a
-                                href="#"
-                                class="-m-2 p-2 block font-medium text-gray-900"
-                                >Impressum</a
-                            >
+                            <a href="#" class="-m-2 p-2 block font-medium text-gray-900">Impressum</a>
                         </div>
                     </div>
                 </div>
             </transition>
         </div>
         <header class="relative bg-white border-b z-40">
-            <nav
-                aria-label="Top"
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-            >
+            <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <div class="h-16 flex items-center justify-between">
                         <div class="flex-1 flex items-center lg:hidden">
@@ -257,10 +218,7 @@
                                 </svg>
                             </button>
 
-                            <a
-                                href="#"
-                                class="ml-2 p-2 text-gray-400 hover:text-gray-500"
-                            >
+                            <a href="#" class="ml-2 p-2 text-gray-400 hover:text-gray-500">
                                 <span class="sr-only">Search</span>
                                 <!-- Heroicon name: outline/search -->
                                 <svg
@@ -290,11 +248,11 @@
                                         <button
                                             @click="setActiveFlyout"
                                             type="button"
-                                            class=" relative z-10 flex items-center justify-center transition-colors ease-out duration-200 text-sm"
+                                            class="relative z-10 flex items-center justify-center transition-colors ease-out duration-200 text-sm"
                                             aria-expanded="false"
                                         >
                                             <span
-                                                class="text-green-700 font-bold rounded  inline-flex items-center justify-center"
+                                                class="text-green-700 font-bold rounded inline-flex items-center justify-center"
                                             >
                                                 Kategorien
                                                 <svg
@@ -332,9 +290,7 @@
                                             ></div>
 
                                             <div class="relative bg-white">
-                                                <div
-                                                    class="max-w-7xl mx-auto px-8"
-                                                >
+                                                <div class="max-w-7xl mx-auto px-8">
                                                     <div
                                                         class="grid grid-cols-2 gap-y-10 gap-x-8 py-12"
                                                     >
@@ -342,7 +298,7 @@
                                                             class="grid grid-rows-1 grid-cols-2 gap-8 text-sm"
                                                         >
                                                             <div
-                                                                class="group relative aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden col-span-2 aspect-w-2"
+                                                                class="group relative aspect-w-1 aspect-h-1 bg-gray-100 overflow-hidden col-span-2 aspect-w-2"
                                                             >
                                                                 <img
                                                                     src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg"
@@ -378,7 +334,7 @@
                                                             </div>
 
                                                             <div
-                                                                class="group relative aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden"
+                                                                class="group relative aspect-w-1 aspect-h-1 bg-gray-100 overflow-hidden"
                                                             >
                                                                 <img
                                                                     src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg"
@@ -414,7 +370,7 @@
                                                             </div>
 
                                                             <div
-                                                                class="group relative aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden"
+                                                                class="group relative aspect-w-1 aspect-h-1 bg-gray-100 overflow-hidden"
                                                             >
                                                                 <img
                                                                     src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg"
@@ -448,18 +404,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="text-sm text-gray-700"
-                                                        >
-                                                            <div
-                                                                class="space-y-10"
-                                                            >
+                                                        <div class="text-sm text-gray-700">
+                                                            <div class="space-y-10">
                                                                 <div>
                                                                     <p
                                                                         class="font-medium text-gray-900"
-                                                                    >
-                                                                        Kategorien
-                                                                    </p>
+                                                                    >Kategorien</p>
                                                                     <ul
                                                                         role="list"
                                                                         aria-labelledby="women-shoes-heading"
@@ -479,10 +429,8 @@
                                                                                         category.slug
                                                                                     )
                                                                                 "
-                                                                            >
-                                                                                href="#"
                                                                                 class="hover:text-gray-800"
-                                                                                >
+                                                                            >
                                                                                 {{
                                                                                     category.name
                                                                                 }}
@@ -502,17 +450,15 @@
                         </div>
 
                         <!-- Logo -->
-                        <Link
-                            href="/"
-                            class="flex text-xl font-display text-green-500"
-                        >
+                        <Link href="/" class="flex text-xl font-display text-green-500">
                             <span class="sr-only">treedeals</span>
-                            tree<span class="text-green-900">deals</span>
+                            tree
+                            <span class="text-green-900">deals</span>
                         </Link>
 
                         <div class="flex-1 flex items-center justify-end">
                             <!-- Search -->
-                            <input class="" />
+                            <input class />
                             <a
                                 href="#"
                                 class="hidden ml-6 p-2 text-gray-400 hover:text-gray-500 lg:block"
@@ -558,7 +504,7 @@
                                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                                     />
                                 </svg>
-                            </a> -->
+                            </a>-->
                         </div>
                     </div>
                 </div>

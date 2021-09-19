@@ -1,6 +1,7 @@
 <template>
     <Layout>
-        <main class="mt-8 space-y-8">
+        <Hero class="col-span-12" />
+        <main class="col-span-12 grid mt-8 space-y-8">
             <!-- Neueste -->
             <section>
                 <h2 class="text-2xl  mb-2 text-green-700">
@@ -55,6 +56,7 @@
 
 <script>
 import Layout from "@/Layouts/Default";
+import Hero from "@/Components/Hero";
 import DealTeaser from "@/Components/DealTeaser.vue";
 import TransformImages from "@/Mixins/transform-storyblok-images";
 
@@ -62,6 +64,7 @@ export default {
     mixins: [TransformImages],
     components: {
         Layout,
+        Hero,
         DealTeaser
     },
     props: {

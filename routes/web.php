@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DealController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,8 @@ Route::get('/', [HomeController::class, 'index']);
 // Deals
 
 Route::get('/deals/{deal}', [DealController::class, 'show'])->name('deal.show');
+
+
+// Categories
+
+Route::get('/{categories}', [CategoryController::class, 'show'])->name('category.show');

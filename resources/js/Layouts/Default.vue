@@ -2,11 +2,9 @@
     <div>
         <Banner />
         <Header />
-        <Hero />
+      
         <div class="grid grid-cols-12 px-2 sm:px-4 lg:px-8 max-w-7xl mx-auto">
-            <div class="col-span-12">
-                <slot></slot>
-            </div>
+            <slot></slot>
         </div>
         <Footer />
     </div>
