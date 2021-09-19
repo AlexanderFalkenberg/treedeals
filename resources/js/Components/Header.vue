@@ -450,11 +450,7 @@
                         </div>
 
                         <!-- Logo -->
-                        <Link href="/" class="flex text-xl font-display text-green-500">
-                            <span class="sr-only">treedeals</span>
-                            tree
-                            <span class="text-green-900">deals</span>
-                        </Link>
+                        <Logo />
 
                         <div class="flex-1 flex items-center justify-end">
                             <!-- Search -->
@@ -515,10 +511,12 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue";
+import Logo from "@/Components/Logo.vue";
 
 export default {
     components: {
-        Link
+        Link,
+        Logo
     },
     data() {
         return {
