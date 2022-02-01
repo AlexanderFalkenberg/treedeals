@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Throwable;
 use App\Models\Category;
 use App\Service\Storyblok;
 use Illuminate\Console\Command;
@@ -41,28 +42,32 @@ class ImportStoryblokCategories extends Command
     {
         $this->info('Importing categories');
 
-        $client = new \Storyblok\Client('orL5ZAn9qQiNIFo5xlHXNwtt');
+        try {
+            $client = new \Storyblok\Client(env('STORYBLOK_CLIENT_KEY'));
 
-        $data = collect($client->getStories([
-            'starts_with' => "de/kategorien",
-            'per_page' => 100,
-            'by_slugs' => 'de/kategorien/*',
-        ])->responseBody['stories']);
+            $data = collect($client->getStories([
+                'starts_with' => "de/kategorien",
+                'per_page' => 100,
+                'by_slugs' => 'de/kategorien/*',
+            ])->responseBody['stories']);
 
 
-        $data->each(function ($data) {
-            Category::updateOrCreate(
-                [
-                    'id' => $data['uuid']
-                ],
-                [
-                    'id' => $data['uuid'],
-                    'user_id' => 1,
-                    'name' => $data['name'],
-                    'slug' => $data['slug'],
-                ]
-            );
-        });
+            $data->each(function ($data) {
+                Category::updateOrCreate(
+                    [
+                        'id' => $data['uuid']
+                    ],
+                    [
+                        'id' => $data['uuid'],
+                        'user_id' => 1,
+                        'name' => $data['name'],
+                        'slug' => $data['slug'],
+                    ]
+                );
+            });
+        } catch (Throwable $e) {
+            $this->info($e);
+        }
 
         $this->info('Categories successfully imported');
     }

@@ -40,7 +40,7 @@ class ImportStoryblokDeals extends Command
     {
         $this->info('Importing deals');
 
-        $client = new \Storyblok\Client('orL5ZAn9qQiNIFo5xlHXNwtt');
+        $client = new \Storyblok\Client(env('STORY_CLIENT_KEY'));
 
         $totalDeals = $client->getStories([
             'start_with' => "de/deals",
